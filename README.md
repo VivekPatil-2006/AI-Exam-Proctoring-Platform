@@ -1,3 +1,126 @@
+# AI Exam & Proctoring Platform
+
+An interview-focused, demo-scale online exam system with AI-assisted proctoring.
+
+This project demonstrates **clean system design**, **explainable AI**, and **real-time monitoring** — without over-engineering.
+
+---
+
+## 🎯 Problem Statement
+
+Online exams suffer from cheating due to lack of effective monitoring.
+Most solutions rely on:
+- continuous video streaming
+- heavy deep learning
+- high infrastructure cost
+- black-box decisions
+
+This project solves the problem using **event-driven + snapshot-based proctoring**.
+
+---
+
+## 🧠 Key Design Decisions
+
+### Why snapshots instead of video?
+- Lower bandwidth & cost
+- Better privacy
+- Easier explainability
+
+### Why rule-based AI?
+- Transparent decisions
+- Easy to justify in interviews
+- Sufficient for demo-scale systems
+
+### Why WebSockets?
+- Real-time warnings
+- No polling
+- Event-based communication
+
+---
+
+## 👥 User Roles
+
+| Role | Capabilities |
+|----|----|
+| Student | Take exam, monitored in real time |
+| Proctor | Create exams, review suspicious activity |
+| Admin (optional) | Manage users and roles |
+
+Single application with **RBAC**, not multiple apps.
+
+---
+
+## 🧱 Architecture Overview
+
+Browser (React)
+→ FastAPI backend
+→ AI inference (OpenCV + MediaPipe)
+→ PostgreSQL
+→ WebSockets for live warnings
+
+No Kafka.  
+No video streaming.  
+No deep learning models.
+
+---
+
+## 🧠 AI Proctoring Features
+
+- Face detection (present / not)
+- Multiple face detection
+- Head pose (looking away)
+- Tab switch & focus loss
+- Rule-based suspicion score
+
+Each AI output is stored as an **event**, not a black-box decision.
+
+---
+
+## 🗂️ Data Tracked
+
+- Exam attempts
+- Browser events
+- AI flags
+- Timestamps
+- Final suspicion score
+- Proctor decision
+
+Everything is auditable.
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+- React + TypeScript
+- Tailwind CSS
+- React Router
+- Zustand
+- WebSockets
+- Browser APIs
+
+### Backend
+- FastAPI
+- JWT authentication
+- SQLAlchemy
+- PostgreSQL
+- WebSockets
+
+### AI
+- OpenCV
+- MediaPipe
+- NumPy
+
+---
+
+## 🚀 How to Run
+
+### Backend
+```bash
+uvicorn app.main:app --reload
+
+---------------------------------------------------------------------------------------
+
 # AI-Exam-Proctoring-Platform
 “This is a online exam platform with AI-assisted proctoring. Instead of heavy video streaming or deep learning, it uses browser events + webcam snapshots + rule-based AI to detect suspicious behavior in real time. The focus is explainability, low cost, and clean system design.”
 
