@@ -126,10 +126,11 @@ uvicorn app.main:app --reload
 
 Key Points
 
-• Built an AI-assisted online exam platform with real-time proctoring using FastAPI and React
-• Designed explainable AI rules for detecting suspicious behavior using OpenCV and MediaPipe
-• Implemented WebSocket-based live monitoring and role-based dashboards
-• Focused on low-cost, interpretable AI instead of heavy video streaming
+• Built an AI-assisted online exam and proctoring platform using FastAPI and React
+• Implemented real-time monitoring with WebSockets and browser behavior tracking
+• Designed explainable AI proctoring using OpenCV and MediaPipe without video streaming
+• Created rule-based suspicion scoring with full event timelines for auditability
+• Applied role-based access control (RBAC) for students, proctors, and admins
 
 User Roles & RBAC (Single App) Role	Responsibilities
 1]Student	->Takes exam, monitored by AI
